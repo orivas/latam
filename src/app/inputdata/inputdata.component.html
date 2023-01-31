@@ -1,0 +1,27 @@
+<div>
+  <form [formGroup]="form" >
+        <mat-form-field appearance="fill" >
+          <mat-label>First name</mat-label>
+          <input matInput  formControlName="name">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" >
+          <mat-label>Last name</mat-label>
+          <input matInput  formControlName="lastName">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" >
+          <mat-label>Age</mat-label>
+          <input matInput  formControlName="age">
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" >
+          <mat-label>Location</mat-label>
+          <input matInput  formControlName="location">
+        </mat-form-field>
+        <button id="btn-login"  class="btn-primario" (click)="save()" >Guardar</button>
+        <button  class="btn-primario" (click)="cancel()"  >Cancelar</button>
+
+        
+  </form>
+</div>
