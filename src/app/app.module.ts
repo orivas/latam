@@ -9,12 +9,16 @@ import { AppComponent } from './app.component';
 import { InputdataComponent } from './inputdata/inputdata.component';
 import { ShowdataComponent } from './showdata/showdata.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DeleteComponent } from './delete/delete.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputdataComponent,
-    ShowdataComponent
+    ShowdataComponent,
+    DeleteComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

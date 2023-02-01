@@ -1,43 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { PersonData } from '../inputdata/model/PersonData';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-showdata',
   templateUrl: './showdata.component.html',
   styleUrls: ['./showdata.component.css']
 })
-export class ShowdataComponent implements OnInit {
-  displayedColumns: string[] = [ 'name', 'lastName', 'age', 'location'];
+export class ShowdataComponent implements OnInit{
+  
+  @ViewChild(ListComponent, {static : true}) list! : ListComponent;
+
   constructor(private dataService: DataService,  private _router: Router){}
   public people: Array<PersonData> = [];
-  public temp: Array<PersonData> = [];
-  public locationFilter:string = ""
+  public peopleMenor: Array<PersonData> = [];
+  public peopleMayor: Array<PersonData> = [];
+  public ageSelected:number = 18
 
-  ngOnInit(){
-    this.getPeople();
-  }
-  
-
-  getPeople(){
+  ngOnInit(): void {
     this.people = this.dataService.getPeople();
-    this.temp = this.people;
-  }
-  
-  onFilter(){
-      var loc = this.locationFilter
-      var newArray = this.people.filter(function (p) {
-        return p.location.toLowerCase() == loc.toLowerCase();
-      });
-      this.people = newArray;
-      console.log(newArray)
   }
 
-  onReset(){
-    
-    this.people = this.temp;
+  private onReset(){
+    this.dataService.reset();
+    this.list.updatePeople();
+  }
 
+  onBack(){
+    this.onReset();
+    this._router.navigate(['app-inputdata']);
   }
 
 }

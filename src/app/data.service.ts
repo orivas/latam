@@ -23,9 +23,18 @@ export class DataService {
     
   }
 
+  reset(){
+    localStorage.setItem('p', JSON.stringify([]));
+  }
+
   private save(val: Array<PersonData> ){
     localStorage.setItem('p', JSON.stringify(val));
     this.people = val;
+  }
+
+  deleteByPosition(position: number){
+    this.people.splice(position,1)
+    this.save(this.people)
   }
 
 }

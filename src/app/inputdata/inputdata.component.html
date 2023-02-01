@@ -20,8 +20,11 @@
           <input matInput  formControlName="location">
         </mat-form-field>
         <button id="btn-login"  class="btn-primario" (click)="save()" >Guardar</button>
-        <button  class="btn-primario" (click)="cancel()"  >Cancelar</button>
-
+        <button  class="btn-primario" (click)="enviar()">Enviar</button>
         
   </form>
+</div>
+
+<div>
+  <app-list [delete]="true"></app-list>
 </div>
